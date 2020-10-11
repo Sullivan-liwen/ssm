@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liwen.dao.EmployeeMapper">
+
+    <!--增加一个Employee-->
+    <insert id="addEmployee" parameterType="Employees">
+      insert into ssmbuild.books(employeeName,employeeCounts,detail)
+      values (#{employeeName}, #{employeeCounts}, #{detail})
+   </insert>
+
+    <!--根据id删除一个Employee-->
+    <delete id="deleteEmployeeById" parameterType="int">
+      delete from ssmbuild.Employees where employeeID=#{employeeID}
+   </delete>
+
+    <!--更新Employee-->
+    <update id="updateEmployee" parameterType="Employees">
+      update ssmbuild.employees
+      set employeeName = #{employeeName},employeeCounts = #{employeeCounts},detail = #{detail}
+      where employeeID = #{employeeID}
+   </update>
+
+    <!--根据id查询,返回一个Employee-->
+    <select id="queryEmployeeById" resultType="Employees">
+      select * from ssmbuild.employees
+      where employeeID = #{employeeID}
+   </select>
+
+    <!--查询全部Employee-->
+    <select id="queryAllEmployee" resultType="Employees">
+      SELECT * from ssmbuild.employees
+   </select>
+
+</mapper>
